@@ -1,0 +1,19 @@
+---
+robots:
+- id: 2
+  name: Reobot
+  city: denver
+  state: co
+  avatar: pantalones
+  birthdate: tuesday
+  date_hired: tuesday
+  department: funemployed
+- id: 3
+  name: Riobot
+  city: none
+  state: a
+  avatar: b
+  birthdate: c
+  date_hired: d
+  department: e
+total: 3
