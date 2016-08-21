@@ -40,11 +40,13 @@ class RobotWorldApp < Sinatra::Base
     erb :edit
   end
 
+  # Edit a robot
   put '/robots/:id' do |id|
     robot_world.update(id.to_i, params[:robot])
     redirect "/robots/#{id}"
   end
 
+  # Delete a robot
   delete '/robots/:id' do |id|
     robot_world.destroy(id.to_i)
     redirect "/robots"
@@ -52,7 +54,12 @@ class RobotWorldApp < Sinatra::Base
 
   # Load or create database and return instance of RobotWorld
   def robot_world
-    database = YAML::Store.new('db/robot_world')
-    @robot_world ||= RobotWorld.new(database)
+    if ENV['RACK_ENV'] == "test"
+      database = YAML::Store.new('db/robot_world_test')
+    else
+      database = YAML::Store.new('db/robot_world')
+    end
+    # database.result_as_hash = true
+    RobotWorld.new(database)
   end
 end

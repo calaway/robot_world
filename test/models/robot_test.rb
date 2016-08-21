@@ -15,7 +15,6 @@ class RobotTest < Minitest::Test
     assert_equal "Raobot", robot.name
     assert_equal "slc", robot.city
     assert_equal "PA", robot.state
-    assert_equal "none", robot.avatar
     assert_equal "01/01/1970", robot.birthdate
     assert_equal "10/11/2012", robot.date_hired
     assert_equal "Mergers & Acquisitions", robot.department

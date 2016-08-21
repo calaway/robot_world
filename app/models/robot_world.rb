@@ -16,7 +16,6 @@ class RobotWorld
                               "name" => robot[:name],
                               "city" => robot[:city],
                               "state" => robot[:state],
-                              "avatar" => robot[:avatar],
                               "birthdate" => robot[:birthdate],
                               "date_hired" => robot[:date_hired],
                               "department" => robot[:department]}
@@ -47,7 +46,6 @@ class RobotWorld
       target["name"] = robot[:name]
       target["city"] = robot[:city]
       target["state"] = robot[:state]
-      target["avatar"] = robot[:avatar]
       target["birthdate"] = robot[:birthdate]
       target["date_hired"] = robot[:date_hired]
       target["department"] = robot[:department]

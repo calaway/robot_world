@@ -1,4 +1,29 @@
-<form action="/robots" method="post">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>ALL THE ROBOTS!!!</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <a href="/" class="navbar-brand">ALL THE ROBOTS!!!</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/robots">Robot Directory</a></li>
+          <li><a href="/robots/new">Create Robot</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <form action="/robots" method="post">
   <h1>Create your robot!</h1>
   <h5>Name: <input type="text" name="robot[name]"/></h5>
   <h5>City: <input type="text" name="robot[city]"/></h5>
@@ -63,5 +88,8 @@
     <option value='Bending'>Bending</opiton>
     <option value='Other'>Other</opiton>
   </select></h5>
-  <input type="submit" id="submit"/>
+  <input type="submit"/>
 </form>
+
+  </body>
+</html>
