@@ -6,11 +6,12 @@ database = SQLite3::Database.new("db/robot_world_development.db")
 database.execute("DELETE FROM robots")
 
 # Insert records.
-database.execute("INSERT INTO robots
-                (name, city, state, birthdate, date_hired, department)
-                VALUES
-                  ('Raobot', 'denver', 'CO', '2016-02-04', '2016-08-07', 'Mergers & Acquisitions')
-                )
+database.execute(
+  "INSERT INTO robots
+    (name, city, state, birthdate, date_hired, department)
+  VALUES
+    ('Raobot', 'denver', 'CO', '2016-02-04', '2016-08-07', 'Mergers & Acquisitions');"
+)
 
 # Verifying that our SQL INSERT statement worked
 puts "It worked and:"

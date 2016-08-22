@@ -1,5 +1,5 @@
 ENV["RACK_ENV"] ||= "test"
-ENV['TASK_MANAGER_ENV'] ||= 'test'
+# ENV['TASK_MANAGER_ENV'] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require "minitest/autorun"
 require "tilt/erb"
@@ -43,7 +43,8 @@ module TestHelper
   end
 
   def robot_world
-    database = YAML::Store.new('db/robot_world_test')
+    database = SQLite3::Database.new('db/robot_world_test.db')
+    database.results_as_hash = true
     RobotWorld.new(database)
   end
 end

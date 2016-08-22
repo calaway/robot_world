@@ -8,24 +8,24 @@ class RobotWorld
   end
 
   def create(robot)
-    database.transaction do
-      database['robots'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['robots'] << { "id" => database['total'],
-                              "name" => robot[:name],
-                              "city" => robot[:city],
-                              "state" => robot[:state],
-                              "birthdate" => robot[:birthdate],
-                              "date_hired" => robot[:date_hired],
-                              "department" => robot[:department]}
-    end
+    database.execute(
+      "INSERT INTO robots
+        (name, city, state, birthdate, date_hired, department)
+      VALUES (
+        '#{robot[:name]}',
+        '#{robot[:city]}',
+        '#{robot[:state]}',
+        '#{robot[:birthdate]}',
+        '#{robot[:date_hired]}',
+        '#{robot[:department]}'
+      );"
+    )
   end
 
   def raw_robots
-    database.transaction do
-      database['robots'] || []
-    end
+    database.execute(
+      "SELECT * FROM robots;"
+    )
   end
 
   def all
@@ -41,27 +41,28 @@ class RobotWorld
   end
 
   def update(id, robot)
-    database.transaction do
-      target = database['robots'].find { |data| data["id"] == id }
-      target["name"] = robot[:name]
-      target["city"] = robot[:city]
-      target["state"] = robot[:state]
-      target["birthdate"] = robot[:birthdate]
-      target["date_hired"] = robot[:date_hired]
-      target["department"] = robot[:department]
-    end
+    database.execute(
+      "UPDATE robots
+      SET
+        name = '#{robot[:name]}',
+        city = '#{robot[:city]}',
+        state = '#{robot[:state]}',
+        birthdate = '#{robot[:birthdate]}',
+        date_hired = '#{robot[:date_hired]}',
+        department = '#{robot[:department]}'
+      WHERE id = #{id};"
+    )
   end
 
   def destroy(id)
-    database.transaction do
-      database['robots'].delete_if { |robot| robot["id"] == id }
-    end
+    database.execute(
+      "DELETE FROM robots WHERE id=#{id};"
+    )
   end
 
   def destroy_all
-    database.transaction do
-      database['robots'] = []
-      database['total'] = 0
-    end
+    database.execute(
+      "DELETE FROM robots"
+    )
   end
 end
